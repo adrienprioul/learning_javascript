@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>DOM</title>
+    <style type="text/css">
+      #log {
+        border: solid 1px grey;
+        margin-top: 20px; 
+        padding: 10px;
+      }
+      #restart {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" name="guess"/> <span id="nbEssais"></span>
+    <div id="log"></div>
+    <button id="restart">Nouveau jeu</button>
+
+    <script type="text/javascript">
+      const guess = document.querySelector("input[name='guess']")
+      
+      guess.addEventListener('keydown', (event) => {
+        if(event.keyCode === 13) {
+          sendGuess()
+        } 
+      })
+
+      function sendGuess() {
+        const value = guess.value
+
+        const guessLog = document.createElement("p")
+        guessLog.append(value)
+
+        log.append(guessLog)
+        guess.value = ''
+      }
+    </script>
+  </body>
+</html>
