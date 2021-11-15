@@ -7,8 +7,9 @@
     </style>
   </head>
   <body>
+    <input type="text" name="marque" id="marque"/>
+    <button type="button" id="searchBtn">Rechercher</button>
     <div id="my-app">
-
     </div>
 
     <script type="text/javascript">
@@ -29,7 +30,64 @@
         { marque: 'adidas', taille: 39, prix: 57.00 }
       ]
 
-      console.log(chaussures)
+      afficherListeChaussures(chaussures);
+
+      const searchBtn = document.querySelector('#searchBtn')
+      searchBtn.addEventListener('click', (event) => {
+        const filterInput = document.querySelector('#marque')
+        const marque = filterInput.value
+
+        if(marque === '') {
+          afficherListeChaussures(chaussures)
+        } else {
+          const filteredChaussures = chercherMarque(marque)
+          afficherListeChaussures(filteredChaussures)
+        }
+      })
+
+      function chercherMarque (marqueCherchee) {
+        // définir un variable de résultat
+        let resultat = []
+
+        // parcourir chaussures et trouver les modèle de la marque
+        //quand trouvé ajouter au résultat
+        for(let i = 0; i < chaussures.length; i++) {
+          if(chaussures[i].marque === marqueCherchee) {
+            resultat.push(chaussures[i])
+          }
+        }
+
+        // retourner le résultat
+        return resultat
+      }
+
+      function afficherListeChaussures(listeChaussures) {
+        // créer un ul
+        const ul = document.createElement('ul')
+
+        // parcourir les chaussures
+        for (let i = 0; i < listeChaussures.length; i++) {
+          // pour chaque :
+          //    - créer un li
+          const li = document.createElement('li')
+
+          //    - créer le texte et ajouter le texte au li
+          // chaussure.append('Marque : ' + listeChaussures[i].marque 
+          //   + ', taille : ' + listeChaussures[i].taille
+          //   + ', prix : ' + listeChaussures[i].prix)
+          li.append(`Marque : ${listeChaussures[i].marque}, taille : ${listeChaussures[i].taille}, prix : ${listeChaussures[i].prix}`)
+
+          //    - ajouter le li au ul
+          ul.append(li)
+        }
+
+        // récupérer my-app
+        const myApp = document.querySelector('#my-app')
+        // vider my-app
+        myApp.textContent = ''
+        // mettre le ul dans my-app
+        myApp.append(ul)
+      }
     </script>
   </body>
 </html>
