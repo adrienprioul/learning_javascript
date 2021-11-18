@@ -1,0 +1,22 @@
+<!DOCTYPE html><!-- Norme html suivi, plus utilisé mais présent pour s'assurer la compatibilité avec les anciens navigateurs -->
+<html>
+  <!-- Contenu non affiché sur la page (méta données, style css, title, ...)-->
+  <head>
+    <meta charset="utf-8">
+    <title>Fetch</title>
+  </head>
+  <!-- Contenu affiché sur la page -->
+  <body>
+    <h1>Hello fetch</h1>
+    <div id="app"></div>
+    
+    <!-- On insère le javascript ici -->
+    <script type="text/javascript">
+      fetch('http://time.jsontest.com')
+      .then(res => res.json())
+      .then((out) => {
+        console.log('Output: ', out);
+      }).catch(err => console.log(err));
+    </script>
+  </body>
+</html>

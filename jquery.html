@@ -1,0 +1,31 @@
+<!DOCTYPE html><!-- Norme html suivi, plus utilisé mais présent pour s'assurer la compatibilité avec les anciens navigateurs -->
+<html>
+  <!-- Contenu non affiché sur la page (méta données, style css, title, ...)-->
+  <head>
+    <meta charset="utf-8">
+    <title>jquery</title>
+  </head>
+  <!-- Contenu affiché sur la page -->
+  <body>
+    <h1>Hello jquery</h1>
+    <div id="app"></div>
+    
+    <!-- On insère le javascript ici -->
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+      integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+      crossorigin="anonymous">
+    </script>
+    <script type="text/javascript">
+      $('#app').html('<p class="msg">I was added through jquery</p>')
+
+      $('<input type="text" id="name"/>').appendTo('#app')
+      $('<p>Bonjour <span id="helloname">adrien</span></p>').appendTo('#app')
+
+      $('#name').val('adrien');
+
+      $('#name').keyup(function () {
+        $('#helloname').text($('#name').val())
+      })
+    </script>
+  </body>
+</html>
